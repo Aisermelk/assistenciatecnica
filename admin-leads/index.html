@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Pedidos</title>
+<meta name="robots" content="noindex">
+<style>
+    :root{ --primary:#0066FF; --bg:#0B0F19; --surface:#151B29; --surface2:#202A3D; --text:#FFFFFF; --muted:#AAB4C8; --border:rgba(255,255,255,.08); }
+    *{box-sizing:border-box;}
+    body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+    .wrap{ max-width:1100px; margin:0 auto; padding:40px 20px; }
+    h1{ font-size:24px; margin-bottom:24px; }
+    #login{ max-width:360px; margin:80px auto; text-align:center; }
+    #login input{ width:100%; padding:14px 16px; border-radius:10px; border:1px solid var(--border); background:var(--surface2); color:var(--text); margin-bottom:12px; font-size:15px; }
+    #login button, .btn{ background:var(--primary); color:#fff; border:none; padding:14px 20px; border-radius:10px; font-weight:600; cursor:pointer; font-size:15px; }
+    table{ width:100%; border-collapse:collapse; background:var(--surface); border-radius:12px; overflow:hidden; }
+    th, td{ padding:12px 14px; text-align:left; border-bottom:1px solid var(--border); font-size:14px; vertical-align:top; }
+    th{ background:var(--surface2); color:var(--muted); text-transform:uppercase; font-size:12px; letter-spacing:.5px; }
+    tr:last-child td{ border-bottom:none; }
+    select{ background:var(--surface2); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:8px; font-size:13px; }
+    a{ color:#00D4FF; }
+    .empty{ padding:40px; text-align:center; color:var(--muted); }
+    .toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; gap:12px; flex-wrap:wrap; }
+    .badge{ padding:4px 10px; border-radius:100px; font-size:12px; font-weight:600; display:inline-block; }
+    .badge-novo{ background:#0066FF33; color:#5AA0FF; }
+    .badge-em_andamento{ background:#F5A62333; color:#F5A623; }
+    .badge-concluido{ background:#3DDC8433; color:#3DDC84; }
+    .badge-cancelado{ background:#FF6B6B33; color:#FF6B6B; }
+</style>
+</head>
+<body>
+
+<div id="login">
+    <h1>Painel de Pedidos</h1>
+    <input type="password" id="token" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')entrar()">
+    <button class="btn" onclick="entrar()">Entrar</button>
+    <p id="login-erro" style="color:#FF6B6B; margin-top:12px; font-size:14px;"></p>
+</div>
+
+<div class="wrap" id="painel" style="display:none">
+    <div class="toolbar">
+        <h1 style="margin:0;">Pedidos de Atendimento</h1>
+        <button class="btn" onclick="carregarPedidos()">Atualizar</button>
+    </div>
+    <div id="conteudo"></div>
+</div>
+
+<script>
+let ADMIN_TOKEN = localStorage.getItem("admin_token") || "";
+
+function escapeHtml(str) {
+    return String(str == null ? "" : str)
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+async function entrar() {
+    ADMIN_TOKEN = document.getElementById("token").value.trim();
+    const res = await fetch("/api/leads", { headers: { "x-admin-token": ADMIN_TOKEN } });
+    if (res.ok) {
+        localStorage.setItem("admin_token", ADMIN_TOKEN);
+        document.getElementById("login").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+        carregarPedidos();
+    } else {
+        document.getElementById("login-erro").textContent = "Senha incorreta.";
+    }
+}
+
+async function carregarPedidos() {
+    const res = await fetch("/api/leads", { headers: { "x-admin-token": ADMIN_TOKEN } });
+    if (!res.ok) { entrar(); return; }
+    const data = await res.json();
+    renderizar(data.leads || []);
+}
+
+const LABELS = { novo: "Novo", em_andamento: "Em andamento", concluido: "Concluído", cancelado: "Cancelado" };
+
+function renderizar(leads) {
+    const conteudo = document.getElementById("conteudo");
+
+    if (!leads.length) {
+        conteudo.innerHTML = '<div class="empty">Nenhum pedido recebido ainda.</div>';
+        return;
+    }
+
+    let linhas = leads.map(function (l) {
+        const numero = (l.phone || "").replace(/\D/g, "");
+        return (
+            '<tr>' +
+            '<td>' + escapeHtml(l.name) + '</td>' +
+            '<td><a href="https://wa.me/55' + numero + '" target="_blank" rel="noopener">' + escapeHtml(l.phone) + '</a></td>' +
+            '<td>' + escapeHtml(l.device) + '</td>' +
+            '<td>' + escapeHtml(l.message) + '</td>' +
+            '<td>' + new Date(l.created_at).toLocaleString("pt-BR") + '</td>' +
+            '<td>' +
+            '<select data-id="' + l.id + '" onchange="atualizarStatus(this)">' +
+            Object.keys(LABELS).map(function (s) {
+                return '<option value="' + s + '"' + (l.status === s ? " selected" : "") + '>' + LABELS[s] + '</option>';
+            }).join("") +
+            '</select>' +
+            '</td>' +
+            '</tr>'
+        );
+    }).join("");
+
+    conteudo.innerHTML =
+        '<table><thead><tr>' +
+        '<th>Nome</th><th>WhatsApp</th><th>Aparelho</th><th>Mensagem</th><th>Recebido em</th><th>Status</th>' +
+        '</tr></thead><tbody>' + linhas + '</tbody></table>';
+}
+
+async function atualizarStatus(select) {
+    const id = select.getAttribute("data-id");
+    await fetch("/api/leads/" + id, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", "x-admin-token": ADMIN_TOKEN },
+        body: JSON.stringify({ status: select.value })
+    });
+}
+
+if (ADMIN_TOKEN) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("painel").style.display = "block";
+    carregarPedidos();
+}
+</script>
+
+</body>
+</html>
