@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Configurações do Site</title>
+    <title>Painel Admin - BTV Assistência</title>
     <style>
         :root {
             --bg: #0B0F19;
@@ -19,88 +19,18 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .card {
-            background: var(--surface);
-            padding: 32px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            width: 100%;
-            max-width: 440px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .card { background: var(--surface); padding: 32px; border-radius: 16px; border: 1px solid var(--border); width: 100%; max-width: 440px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
         .card-header { text-align: center; margin-bottom: 24px; }
         .card-header h1 { font-size: 22px; color: var(--secondary); margin-bottom: 6px; }
-        .card-header p { font-size: 13px; color: var(--text-muted); }
-
         .form-group { margin-bottom: 16px; }
         label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
-        
-        input {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: var(--bg);
-            color: var(--text);
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-
-        input:focus { outline: none; border-color: var(--primary); }
-        .help-text { font-size: 11px; color: rgba(170, 180, 200, 0.6); margin-top: 4px; }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            background: var(--primary);
-            color: #fff;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s, transform 0.1s;
-        }
-
+        input { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); background: var(--bg); color: var(--text); font-size: 14px; }
+        button { width: 100%; padding: 14px; border: none; border-radius: 8px; background: var(--primary); color: #fff; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         button:hover { background: var(--primary-hover); }
-        button:active { transform: scale(0.98); }
-
-        .alert {
-            display: none;
-            text-align: center;
-            margin-top: 16px;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        .alert-success {
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid var(--success);
-            color: var(--success);
-        }
-
-        .alert-danger {
-            background: rgba(255, 77, 77, 0.1);
-            border: 1px solid var(--danger);
-            color: var(--danger);
-        }
-
+        .alert { display: none; text-align: center; margin-top: 16px; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 13px; }
+        .alert-success { background: rgba(37, 211, 102, 0.1); border: 1px solid var(--success); color: var(--success); }
+        .alert-danger { background: rgba(255, 77, 77, 0.1); border: 1px solid var(--danger); color: var(--danger); }
         #admin-content { display: none; }
     </style>
 </head>
@@ -108,127 +38,87 @@
 
     <!-- TELA DE LOGIN -->
     <div class="card" id="login-box">
-        <div class="card-header">
-            <h1>🔒 Acesso Restrito</h1>
-            <p>Digite a senha para acessar o painel de controle</p>
-        </div>
+        <div class="card-header"><h1>🔒 Acesso Restrito</h1></div>
         <div class="form-group">
-            <label for="passInput">Senha de Acesso:</label>
-            <input type="password" id="passInput" placeholder="Sua senha...">
+            <label>Senha:</label>
+            <input type="password" id="passInput">
         </div>
-        <button onclick="verificarSenha()">Entrar no Painel</button>
+        <button onclick="verificarSenha()">Entrar</button>
         <div id="login-alert" class="alert alert-danger">❌ Senha incorreta!</div>
     </div>
 
-    <!-- CONTEÚDO DO PAINEL -->
+    <!-- PAINEL -->
     <div class="card" id="admin-content">
-        <div class="card-header">
-            <h1>⚙️ Painel de Controle (Nuvem)</h1>
-            <p>Gerencie contatos, redes sociais e tags integradas ao Firebase</p>
-        </div>
-        
+        <div class="card-header"><h1>⚙️ Configurações</h1></div>
         <div class="form-group">
-            <label for="waInput">Número do WhatsApp:</label>
-            <input type="text" id="waInput" placeholder="Ex: 5511972608991">
-            <div class="help-text">Código do país (55) + DDD + Número</div>
+            <label>WhatsApp:</label>
+            <input type="text" id="waInput" placeholder="5511999999999">
         </div>
-
         <div class="form-group">
-            <label for="instaInput">Link do Instagram:</label>
-            <input type="text" id="instaInput" placeholder="https://instagram.com/seuusuario">
+            <label>Instagram:</label>
+            <input type="text" id="instaInput">
         </div>
-
         <div class="form-group">
-            <label for="faceInput">Link do Facebook:</label>
-            <input type="text" id="faceInput" placeholder="https://facebook.com/suapagina">
+            <label>Facebook:</label>
+            <input type="text" id="faceInput">
         </div>
-
         <div class="form-group">
-            <label for="pixelInput">ID do Meta Pixel:</label>
-            <input type="text" id="pixelInput" placeholder="Ex: 123456789012345">
+            <label>ID Meta Pixel:</label>
+            <input type="text" id="pixelInput">
         </div>
-
         <div class="form-group">
-            <label for="googleInput">ID da Google Tag (GA4 / Ads):</label>
-            <input type="text" id="googleInput" placeholder="Ex: G-XXXXXXXXXX ou AW-123456789">
+            <label>ID Google Tag:</label>
+            <input type="text" id="googleInput">
         </div>
-
         <button onclick="salvarConfiguracoes()">Salvar na Nuvem</button>
-        
-        <div id="alert" class="alert alert-success">✅ Configurações salvas na nuvem com sucesso!</div>
+        <div id="alert" class="alert alert-success">✅ Salvo com sucesso!</div>
     </div>
 
-    <!-- SCRIPT DO FIREBASE E LÓGICA -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCnh-PkX6IixSz8DsUWlKi3HkRLjEurGrY",
-            authDomain: "btvassistenciatecnica.firebaseapp.com",
             projectId: "btvassistenciatecnica",
+            authDomain: "btvassistenciatecnica.firebaseapp.com",
             storageBucket: "btvassistenciatecnica.firebasestorage.app",
             messagingSenderId: "855769187312",
-            appId: "1:855769187312:web:72b25d02059b1beb8dd335",
-            measurementId: "G-W2RBX4JLR6"
+            appId: "1:855769187312:web:72b25d02059b1beb8dd335"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
+        const db = getFirestore(initializeApp(firebaseConfig));
         const SENHA_CORRETA = "admin123";
 
-        // Expõe funções globais para os botões do HTML
-        window.verificarSenha = async function() {
-            const senhaDigitada = document.getElementById("passInput").value;
-            const loginAlert = document.getElementById("login-alert");
-
-            if (senhaDigitada === SENHA_CORRETA) {
+        window.verificarSenha = async () => {
+            if (document.getElementById("passInput").value === SENHA_CORRETA) {
                 document.getElementById("login-box").style.display = "none";
                 document.getElementById("admin-content").style.display = "block";
-                await carregarDados();
+                const docSnap = await getDoc(doc(db, "configuracoes", "site"));
+                if (docSnap.exists()) {
+                    const d = docSnap.data();
+                    document.getElementById("waInput").value = d.whatsapp || "";
+                    document.getElementById("instaInput").value = d.instagram || "";
+                    document.getElementById("faceInput").value = d.facebook || "";
+                    document.getElementById("pixelInput").value = d.pixel_id || "";
+                    document.getElementById("googleInput").value = d.google_id || "";
+                }
             } else {
-                loginAlert.style.display = "block";
-                setTimeout(() => loginAlert.style.display = "none", 3000);
+                document.getElementById("login-alert").style.display = "block";
+                setTimeout(() => document.getElementById("login-alert").style.display = "none", 2000);
             }
         };
 
-        async function carregarDados() {
-            try {
-                const docRef = doc(db, "configuracoes", "site");
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    document.getElementById("waInput").value = data.whatsapp || "";
-                    document.getElementById("instaInput").value = data.instagram || "";
-                    document.getElementById("faceInput").value = data.facebook || "";
-                    document.getElementById("pixelInput").value = data.pixel_id || "";
-                    document.getElementById("googleInput").value = data.google_id || "";
-                }
-            } catch (e) {
-                console.error("Erro ao carregar do Firebase:", e);
-            }
-        }
-
-        window.salvarConfiguracoes = async function() {
-            const config = {
-                whatsapp: document.getElementById("waInput").value.trim(),
-                instagram: document.getElementById("instaInput").value.trim(),
-                facebook: document.getElementById("faceInput").value.trim(),
-                pixel_id: document.getElementById("pixelInput").value.trim(),
-                google_id: document.getElementById("googleInput").value.trim()
-            };
-
-            try {
-                // Salva no Firestore na coleção "configuracoes", documento "site"
-                await setDoc(doc(db, "configuracoes", "site"), config);
-                
-                const alertBox = document.getElementById("alert");
-                alertBox.style.display = "block";
-                setTimeout(() => alertBox.style.display = "none", 3000);
-            } catch (e) {
-                alert("Erro ao salvar no Firebase: " + e.message);
-            }
+        window.salvarConfiguracoes = async () => {
+            await setDoc(doc(db, "configuracoes", "site"), {
+                whatsapp: document.getElementById("waInput").value,
+                instagram: document.getElementById("instaInput").value,
+                facebook: document.getElementById("faceInput").value,
+                pixel_id: document.getElementById("pixelInput").value,
+                google_id: document.getElementById("googleInput").value
+            });
+            document.getElementById("alert").style.display = "block";
+            setTimeout(() => document.getElementById("alert").style.display = "none", 2000);
         };
     </script>
 </body>
