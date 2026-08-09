@@ -3,152 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualização de BTV e TV BOX | Suporte Remoto Especializado</title>
-    <meta name="description" content="Suporte técnico e atualização especializada para BTV e TV BOX em todo o Brasil. Atendimento remoto rápido, seguro e sem sair de casa.">
-    
-    <!-- FAVICON -->
-    <link rel="icon" href="assets/favicon.png" type="image/png">
-    
-    <!-- ESTILOS (Na raiz do projeto) -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>BTV Assistência Técnica</title>
+    <style>
+        :root {
+            --bg: #0B0F19;
+            --surface: #151B29;
+            --primary: #0066FF;
+            --secondary: #00D4FF;
+            --text: #FFFFFF;
+            --text-muted: #AAB4C8;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 { color: var(--secondary); margin-bottom: 10px; }
+        p { color: var(--text-muted); margin-bottom: 30px; }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: var(--secondary); color: var(--bg); }
+        
+        .social-links { margin-top: 30px; }
+    </style>
 </head>
 <body>
 
-    <!-- CABEÇALHO -->
-    <header id="main-header">
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <img src="assets/logo.png" alt="Logo Assistência Técnica ">
-            </a>
-            <a href="#" class="btn-whatsapp js-wa-link">
-                💬 Falar no WhatsApp
-            </a>
+    <div class="container">
+        <h1>BTV Assistência Técnica</h1>
+        <p>Suporte especializado para o seu dispositivo.</p>
+
+        <!-- Botões de Ação -->
+        <a href="#" id="wa-link" class="btn">Falar no WhatsApp</a>
+        
+        <div class="social-links">
+            <a href="#" id="insta-link" class="btn" style="background: #e1306c;">Instagram</a>
+            <a href="#" id="face-link" class="btn" style="background: #4267B2;">Facebook</a>
         </div>
-    </header>
+    </div>
 
-    <!-- HERO SECTION -->
-    <section id="hero">
-        <div class="container hero-container">
-            <div class="hero-left">
-                <span class="badge">⭐ Atendimento Remoto em Todo o Brasil</span>
-                <h1>Atualização Especializada para <span>BTV e TV BOX</span></h1>
-                <p>Seu aparelho está lento, travando ou precisa de atualização? Conte com especialistas para atualizar, configurar e oferecer suporte remoto com rapidez e segurança.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#" class="btn-primary js-wa-link">Solicitar Atendimento</a>
-                    <a href="#services" class="btn-secondary">Conhecer Serviços</a>
-                </div>
+    <!-- LÓGICA DE INTEGRAÇÃO FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-                <div class="hero-features">
-                    <div class="feature"><span>✔</span><p>Atendimento Seguro</p></div>
-                    <div class="feature"><span>✔</span><p>Atualização Rápida</p></div>
-                    <div class="feature"><span>✔</span><p>Suporte Especializado</p></div>
-                    <div class="feature"><span>✔</span><p>Diversos Modelos</p></div>
-                </div>
-            </div>
+        // Firebase Config (ID do seu projeto)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnh-PkX6IixSz8DsUWlKi3HkRLjEurGrY",
+            authDomain: "btvassistenciatecnica.firebaseapp.com",
+            projectId: "btvassistenciatecnica",
+            storageBucket: "btvassistenciatecnica.firebasestorage.app",
+            messagingSenderId: "855769187312",
+            appId: "1:855769187312:web:72b25d02059b1beb8dd335",
+            measurementId: "G-W2RBX4JLR6"
+        };
 
-            <div class="hero-right">
-                <div class="hero-img-wrapper">
-                    <img src="assets/hero.webp" alt="Aparelho BTV e TV BOX" class="hero-img">
-                    <div class="hero-card-float">
-                        <h3>Atendimento Imediato</h3>
-                        <p>Suporte remoto rápido para diversos modelos de TV Box.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-    <!-- SEÇÃO DE SERVIÇOS -->
-    <section id="services">
-        <div class="container">
-            <div class="section-title">
-                <span>SERVIÇOS</span>
-                <h2>O que fazemos por você</h2>
-            </div>
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const docRef = doc(db, "configuracoes", "site");
+                const docSnap = await getDoc(docRef);
 
-            <div class="services-grid">
-                <article class="card">
-                    <div class="icon">📺</div>
-                    <h3>Atualização de BTV</h3>
-                    <p>Melhore o desempenho, atualize o sistema e recupere a estabilidade do seu aparelho BTV.</p>
-                </article>
+                if (docSnap.exists()) {
+                    const config = docSnap.data();
 
-                <article class="card">
-                    <div class="icon">📦</div>
-                    <h3>Atualização BTV</h3>
-                    <p>Configuração completa, otimização e atualização para os principais modelos Android TV.</p>
-                </article>
+                    // 1. Atualizar WhatsApp
+                    if (config.whatsapp) {
+                        document.getElementById("wa-link").href = `https://wa.me/${config.whatsapp}?text=Olá! Preciso de suporte para BTV.`;
+                    }
 
-                <article class="card">
-                    <div class="icon">🔧</div>
-                    <h3>Correção de Travamentos</h3>
-                    <p>Diagnóstico técnico especializado para eliminar lentidões, bugs e travamentos constantes.</p>
-                </article>
-            </div>
-        </div>
-    </section>
+                    // 2. Atualizar Redes Sociais
+                    if (config.instagram) document.getElementById("insta-link").href = config.instagram;
+                    if (config.facebook) document.getElementById("face-link").href = config.facebook;
 
-    <!-- PERGUNTAS FREQUENTES (FAQ) -->
-    <section id="faq">
-        <div class="container">
-            <div class="section-title">
-                <span>DÚVIDAS</span>
-                <h2>Perguntas Frequentes</h2>
-            </div>
+                    // 3. Injetar Meta Pixel
+                    if (config.pixel_id) {
+                        !function(f,b,e,v,n,t,s) {
+                            if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+                            t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+                            s.parentNode.insertBefore(t,s)
+                        }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                        fbq('init', config.pixel_id);
+                        fbq('track', 'PageView');
+                    }
 
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">Como funciona o atendimento remoto?</button>
-                    <div class="faq-answer">
-                        <p>Realizamos a orientação e o suporte passo a passo diretamente pelo WhatsApp, de forma prática, rápida e totalmente segura.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Preciso enviar meu aparelho por correio?</button>
-                    <div class="faq-answer">
-                        <p>Não! Todo o processo é feito à distância, na comodidade da sua casa. Basta ter acesso à internet.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Quanto tempo demora o procedimento?</button>
-                    <div class="faq-answer">
-                        <p>O atendimento é iniciado imediatamente assim que você nos chama. O tempo médio de atualização depende do modelo do seu aparelho.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHAMADA FINAL (CTA) -->
-    <section id="cta">
-        <div class="container cta-container">
-            <h2>Precisa de ajuda com seu aparelho?</h2>
-            <p>Fale diretamente com nosso suporte técnico agora mesmo pelo WhatsApp.</p>
-            <a href="#" class="btn-primary js-wa-link">💬 Chamar no WhatsApp</a>
-        </div>
-    </section>
-
-    <!-- RODAPÉ E REDES SOCIAIS -->
-    <footer>
-        <div class="footer-socials">
-            <a href="#" class="social-link js-insta-link">📷 Instagram</a>
-            <a href="#" class="social-link js-face-link">📘 Facebook</a>
-        </div>
-        <p>© <span id="ano">2026</span> Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
-    <a href="#" class="whatsapp-float js-wa-link" aria-label="Falar no WhatsApp">💬</a>
-
-    <!-- SCRIPT JS (Na raiz do projeto) -->
-    <script src="script.js"></script>
+                    // 4. Injetar Google Tag
+                    if (config.google_id) {
+                        const script = document.createElement("script");
+                        script.async = true;
+                        script.src = `https://www.googletagmanager.com/gtag/js?id=${config.google_id}`;
+                        document.head.appendChild(script);
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', config.google_id);
+                    }
+                }
+            } catch (e) {
+                console.error("Erro ao carregar dados do Firebase:", e);
+            }
+        });
+    </script>
 </body>
 </html>
