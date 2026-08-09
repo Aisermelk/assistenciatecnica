@@ -15,6 +15,7 @@
             --text: #FFFFFF;
             --text-muted: #AAB4C8;
             --success: #25D366;
+            --danger: #FF4D4D;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -84,17 +85,43 @@
             margin-top: 16px;
             padding: 10px;
             border-radius: 6px;
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid var(--success);
             font-size: 13px;
-            color: var(--success);
             font-weight: bold;
         }
+
+        .alert-success {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .alert-danger {
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+
+        #admin-content { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <!-- TELA DE LOGIN POR SENHA -->
+    <div class="card" id="login-box">
+        <div class="card-header">
+            <h1>🔒 Acesso Restrito</h1>
+            <p>Digite a senha para acessar o painel de controle</p>
+        </div>
+        <div class="form-group">
+            <label for="passInput">Senha de Acesso:</label>
+            <input type="password" id="passInput" placeholder="Sua senha...">
+        </div>
+        <button onclick="verificarSenha()">Entrar no Painel</button>
+        <div id="login-alert" class="alert alert-danger">❌ Senha incorreta!</div>
+    </div>
+
+    <!-- CONTEÚDO DO PAINEL -->
+    <div class="card" id="admin-content">
         <div class="card-header">
             <h1>⚙️ Painel de Controle</h1>
             <p>Gerencie contatos, redes sociais e tags do site</p>
@@ -128,13 +155,29 @@
 
         <button onclick="salvarConfiguracoes()">Salvar Alterações</button>
         
-        <div id="alert" class="alert">✅ Configurações salvas com sucesso!</div>
+        <div id="alert" class="alert alert-success">✅ Configurações salvas com sucesso!</div>
     </div>
 
     <script>
+        // DEFINA A SUA SENHA AQUI
+        const SENHA_CORRETA = "admin123";
         const CONFIG_KEY = "site_config";
 
-        document.addEventListener("DOMContentLoaded", () => {
+        function verificarSenha() {
+            const senhaDigitada = document.getElementById("passInput").value;
+            const loginAlert = document.getElementById("login-alert");
+
+            if (senhaDigitada === SENHA_CORRETA) {
+                document.getElementById("login-box").style.display = "none";
+                document.getElementById("admin-content").style.display = "block";
+                carregarDados();
+            } else {
+                loginAlert.style.display = "block";
+                setTimeout(() => loginAlert.style.display = "none", 3000);
+            }
+        }
+
+        function carregarDados() {
             const salva = localStorage.getItem(CONFIG_KEY);
             if (salva) {
                 const data = JSON.parse(salva);
@@ -144,7 +187,7 @@
                 document.getElementById("pixelInput").value = data.pixel_id || "";
                 document.getElementById("googleInput").value = data.google_id || "";
             }
-        });
+        }
 
         function salvarConfiguracoes() {
             const config = {
