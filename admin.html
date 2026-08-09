@@ -106,7 +106,7 @@
 </head>
 <body>
 
-    <!-- TELA DE LOGIN POR SENHA -->
+    <!-- TELA DE LOGIN -->
     <div class="card" id="login-box">
         <div class="card-header">
             <h1>🔒 Acesso Restrito</h1>
@@ -123,8 +123,8 @@
     <!-- CONTEÚDO DO PAINEL -->
     <div class="card" id="admin-content">
         <div class="card-header">
-            <h1>⚙️ Painel de Controle</h1>
-            <p>Gerencie contatos, redes sociais e tags do site</p>
+            <h1>⚙️ Painel de Controle (Nuvem)</h1>
+            <p>Gerencie contatos, redes sociais e tags integradas ao Firebase</p>
         </div>
         
         <div class="form-group">
@@ -153,43 +153,64 @@
             <input type="text" id="googleInput" placeholder="Ex: G-XXXXXXXXXX ou AW-123456789">
         </div>
 
-        <button onclick="salvarConfiguracoes()">Salvar Alterações</button>
+        <button onclick="salvarConfiguracoes()">Salvar na Nuvem</button>
         
-        <div id="alert" class="alert alert-success">✅ Configurações salvas com sucesso!</div>
+        <div id="alert" class="alert alert-success">✅ Configurações salvas na nuvem com sucesso!</div>
     </div>
 
-    <script>
-        // DEFINA A SUA SENHA AQUI
-        const SENHA_CORRETA = "admin123";
-        const CONFIG_KEY = "site_config";
+    <!-- SCRIPT DO FIREBASE E LÓGICA -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        function verificarSenha() {
+        const firebaseConfig = {
+            apiKey: "AIzaSyCnh-PkX6IixSz8DsUWlKi3HkRLjEurGrY",
+            authDomain: "btvassistenciatecnica.firebaseapp.com",
+            projectId: "btvassistenciatecnica",
+            storageBucket: "btvassistenciatecnica.firebasestorage.app",
+            messagingSenderId: "855769187312",
+            appId: "1:855769187312:web:72b25d02059b1beb8dd335",
+            measurementId: "G-W2RBX4JLR6"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const SENHA_CORRETA = "admin123";
+
+        // Expõe funções globais para os botões do HTML
+        window.verificarSenha = async function() {
             const senhaDigitada = document.getElementById("passInput").value;
             const loginAlert = document.getElementById("login-alert");
 
             if (senhaDigitada === SENHA_CORRETA) {
                 document.getElementById("login-box").style.display = "none";
                 document.getElementById("admin-content").style.display = "block";
-                carregarDados();
+                await carregarDados();
             } else {
                 loginAlert.style.display = "block";
                 setTimeout(() => loginAlert.style.display = "none", 3000);
             }
-        }
+        };
 
-        function carregarDados() {
-            const salva = localStorage.getItem(CONFIG_KEY);
-            if (salva) {
-                const data = JSON.parse(salva);
-                document.getElementById("waInput").value = data.whatsapp || "";
-                document.getElementById("instaInput").value = data.instagram || "";
-                document.getElementById("faceInput").value = data.facebook || "";
-                document.getElementById("pixelInput").value = data.pixel_id || "";
-                document.getElementById("googleInput").value = data.google_id || "";
+        async function carregarDados() {
+            try {
+                const docRef = doc(db, "configuracoes", "site");
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    document.getElementById("waInput").value = data.whatsapp || "";
+                    document.getElementById("instaInput").value = data.instagram || "";
+                    document.getElementById("faceInput").value = data.facebook || "";
+                    document.getElementById("pixelInput").value = data.pixel_id || "";
+                    document.getElementById("googleInput").value = data.google_id || "";
+                }
+            } catch (e) {
+                console.error("Erro ao carregar do Firebase:", e);
             }
         }
 
-        function salvarConfiguracoes() {
+        window.salvarConfiguracoes = async function() {
             const config = {
                 whatsapp: document.getElementById("waInput").value.trim(),
                 instagram: document.getElementById("instaInput").value.trim(),
@@ -198,12 +219,17 @@
                 google_id: document.getElementById("googleInput").value.trim()
             };
 
-            localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
-            
-            const alertBox = document.getElementById("alert");
-            alertBox.style.display = "block";
-            setTimeout(() => alertBox.style.display = "none", 3000);
-        }
+            try {
+                // Salva no Firestore na coleção "configuracoes", documento "site"
+                await setDoc(doc(db, "configuracoes", "site"), config);
+                
+                const alertBox = document.getElementById("alert");
+                alertBox.style.display = "block";
+                setTimeout(() => alertBox.style.display = "none", 3000);
+            } catch (e) {
+                alert("Erro ao salvar no Firebase: " + e.message);
+            }
+        };
     </script>
 </body>
 </html>
