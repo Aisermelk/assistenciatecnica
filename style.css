@@ -126,6 +126,14 @@ section {
   object-fit: cover;
 }
 
+/* Botão do WhatsApp menor especificamente no Header */
+.header-container .btn-whatsapp {
+  padding: 8px 16px;
+  font-size: 13px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
 /* =====================================
    HERO SECTION & CARD FLUTUANTE
 ===================================== */
@@ -503,12 +511,18 @@ footer {
     font-size: 14px;
   }
 
+  /* Mantém o botão do topo compacto no mobile */
+  .header-container .btn-whatsapp {
+    width: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
   .hero-features {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  /* Ajuste refinado do Card Flutuante para celulares menores */
   .hero-card-float {
     position: relative;
     bottom: 0;
