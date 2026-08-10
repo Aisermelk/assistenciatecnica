@@ -1,6 +1,8 @@
 /* =====================================
-   1. CARREGAMENTO DE CONFIGURAÇÕES (ADMIN)
+   CONFIGURAÇÃO DA API (PLANILHA DO GOOGLE)
 ===================================== */
+const API_URL = "https://script.google.com/macros/s/AKfycbxgJkhJw1aUD6bFWxv8xqrhE5udnKqWUfGAUXJKnasMlG21DyfBbh8uhlHS4XjQeluyXQ/exec";
+
 const CONFIG_PADRAO = {
   whatsapp: "5511972608991",
   instagram: "#",
@@ -9,54 +11,60 @@ const CONFIG_PADRAO = {
   google_id: ""
 };
 
-function obterConfig() {
-  const salva = localStorage.getItem("site_config");
-  return salva ? JSON.parse(salva) : CONFIG_PADRAO;
-}
-
-const config = obterConfig();
-
-/* =====================================
-   2. INJEÇÃO DO META PIXEL
-===================================== */
-if (config.pixel_id) {
-  !(function (f, b, e, v, n, t, s) {
-    if (f.fbq) return;
-    n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+// Busca os dados diretamente da Planilha do Google
+async function carregarConfiguracoes() {
+  try {
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    return {
+      whatsapp: data.whatsapp || CONFIG_PADRAO.whatsapp,
+      instagram: data.instagram || CONFIG_PADRAO.instagram,
+      facebook: data.facebook || CONFIG_PADRAO.facebook,
+      pixel_id: data.pixel_id || CONFIG_PADRAO.pixel_id,
+      google_id: data.google_id || CONFIG_PADRAO.google_id
     };
-    if (!f._fbq) f._fbq = n;
-    n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
-    t = b.createElement(e); t.async = !0; t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s);
-  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-
-  fbq("init", config.pixel_id);
-  fbq("track", "PageView");
+  } catch (error) {
+    console.warn("Erro ao buscar dados da planilha, usando padrão.", error);
+    return CONFIG_PADRAO;
+  }
 }
 
-/* =====================================
-   3. INJEÇÃO DA GOOGLE TAG (GA4 / ADS)
-===================================== */
-if (config.google_id) {
-  const gScript = document.createElement("script");
-  gScript.async = true;
-  gScript.src = `https://www.googletagmanager.com/gtag/js?id=${config.google_id}`;
-  document.head.appendChild(gScript);
+document.addEventListener("DOMContentLoaded", async () => {
+  const config = await carregarConfiguracoes();
 
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', config.google_id);
-}
+  // Injeção do Meta Pixel
+  if (config.pixel_id) {
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-/* =====================================
-   4. ATUALIZAÇÃO DOS LINKS E EVENTOS
-===================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  // WhatsApp
-  const numWhatsApp = config.whatsapp ? config.whatsapp.replace(/\D/g, "") : "";
+    fbq("init", config.pixel_id);
+    fbq("track", "PageView");
+  }
+
+  // Injeção da Google Tag (GA4 / Ads)
+  if (config.google_id) {
+    const gScript = document.createElement("script");
+    gScript.async = true;
+    gScript.src = `https://www.googletagmanager.com/gtag/js?id=${config.google_id}`;
+    document.head.appendChild(gScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', config.google_id);
+  }
+
+  // Atualização dos Links do WhatsApp
+  const numWhatsApp = config.whatsapp ? String(config.whatsapp).replace(/\D/g, "") : "";
   if (numWhatsApp) {
     const linkWhatsApp = `https://wa.me/${numWhatsApp}`;
     document.querySelectorAll(".js-wa-link").forEach(btn => {
@@ -99,9 +107,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* =====================================
-   5. ACORDEÃO DO FAQ (PERGUNTAS FREQUENTES)
-===================================== */
+// Acordeão do FAQ
 document.querySelectorAll(".faq-question").forEach(btn => {
   btn.addEventListener("click", () => {
     const item = btn.parentElement;
