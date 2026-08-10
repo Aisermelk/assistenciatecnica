@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Configurações do Site</title>
+    <style>
+        :root {
+            --bg: #0B0F19;
+            --surface: #151B29;
+            --border: rgba(255, 255, 255, 0.08);
+            --primary: #0066FF;
+            --primary-hover: #0052CC;
+            --secondary: #00D4FF;
+            --text: #FFFFFF;
+            --text-muted: #AAB4C8;
+            --success: #25D366;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-header { text-align: center; margin-bottom: 24px; }
+        .card-header h1 { font-size: 22px; color: var(--secondary); margin-bottom: 6px; }
+        .card-header p { font-size: 13px; color: var(--text-muted); }
+
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+        
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        input:focus { outline: none; border-color: var(--primary); }
+        .help-text { font-size: 11px; color: rgba(170, 180, 200, 0.6); margin-top: 4px; }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        button:hover { background: var(--primary-hover); }
+        button:active { transform: scale(0.98); }
+
+        .alert {
+            display: none;
+            text-align: center;
+            margin-top: 16px;
+            padding: 10px;
+            border-radius: 6px;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid var(--success);
+            font-size: 13px;
+            color: var(--success);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            <h1>⚙️ Painel de Controle</h1>
+            <p>Gerencie contatos, redes sociais e tags do site</p>
+        </div>
+        
+        <div class="form-group">
+            <label for="waInput">Número do WhatsApp:</label>
+            <input type="text" id="waInput" placeholder="Ex: 5511972608991">
+            <div class="help-text">Código do país (55) + DDD + Número</div>
+        </div>
+
+        <div class="form-group">
+            <label for="instaInput">Link do Instagram:</label>
+            <input type="text" id="instaInput" placeholder="https://instagram.com/seuusuario">
+        </div>
+
+        <div class="form-group">
+            <label for="faceInput">Link do Facebook:</label>
+            <input type="text" id="faceInput" placeholder="https://facebook.com/suapagina">
+        </div>
+
+        <div class="form-group">
+            <label for="pixelInput">ID do Meta Pixel:</label>
+            <input type="text" id="pixelInput" placeholder="Ex: 123456789012345">
+        </div>
+
+        <div class="form-group">
+            <label for="googleInput">ID da Google Tag (GA4 / Ads):</label>
+            <input type="text" id="googleInput" placeholder="Ex: G-XXXXXXXXXX ou AW-123456789">
+        </div>
+
+        <button onclick="salvarConfiguracoes()">Salvar Alterações</button>
+        
+        <div id="alert" class="alert">✅ Configurações salvas com sucesso!</div>
+    </div>
+
+    <script>
+        const CONFIG_KEY = "site_config";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const salva = localStorage.getItem(CONFIG_KEY);
+            if (salva) {
+                const data = JSON.parse(salva);
+                document.getElementById("waInput").value = data.whatsapp || "";
+                document.getElementById("instaInput").value = data.instagram || "";
+                document.getElementById("faceInput").value = data.facebook || "";
+                document.getElementById("pixelInput").value = data.pixel_id || "";
+                document.getElementById("googleInput").value = data.google_id || "";
+            }
+        });
+
+        function salvarConfiguracoes() {
+            const config = {
+                whatsapp: document.getElementById("waInput").value.trim(),
+                instagram: document.getElementById("instaInput").value.trim(),
+                facebook: document.getElementById("faceInput").value.trim(),
+                pixel_id: document.getElementById("pixelInput").value.trim(),
+                google_id: document.getElementById("googleInput").value.trim()
+            };
+
+            localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+            
+            const alertBox = document.getElementById("alert");
+            alertBox.style.display = "block";
+            setTimeout(() => alertBox.style.display = "none", 3000);
+        }
+    </script>
+</body>
+</html>
