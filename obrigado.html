@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Solicitação recebida | Assistência Técnica
+    </title>
+
+    <meta
+        name="description"
+        content="Sua solicitação foi recebida. Nossa equipe entrará em contato."
+    >
+
+    <meta
+        name="theme-color"
+        content="#070B12"
+    >
+
+    <link
+        rel="icon"
+        href="assets/favicon.png"
+        type="image/png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           PÁGINA DE OBRIGADO
+        ====================================================== */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(8, 217, 255, 0.10),
+                    transparent 38%
+                ),
+                #060b14;
+        }
+
+        .thank-you-page {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                120px 20px
+                70px;
+        }
+
+        .thank-you-card {
+            width: min(620px, 100%);
+
+            padding: 55px 40px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 31, 48, 0.97),
+                    rgba(8, 15, 26, 0.98)
+                );
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .success-icon {
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(37, 211, 102, 0.12);
+
+            border:
+                1px solid rgba(37, 211, 102, 0.25);
+
+            color: #25d366;
+
+            font-size: 42px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 0 35px rgba(37, 211, 102, 0.10);
+        }
+
+        .thank-you-card h1 {
+            margin-bottom: 18px;
+
+            color: #ffffff;
+
+            font-size:
+                clamp(2rem, 5vw, 3rem);
+
+            line-height: 1.15;
+
+            font-weight: 800;
+
+            letter-spacing: -1px;
+        }
+
+        .thank-you-card h1 span {
+            color: #08d9ff;
+        }
+
+        .thank-you-card > p {
+            max-width: 500px;
+
+            margin:
+                0 auto 30px;
+
+            color: #a8b6c7;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+        .thank-you-actions {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .thank-you-actions .btn-primary,
+        .thank-you-actions .btn-secondary {
+            min-width: 210px;
+        }
+
+        .thank-you-note {
+            margin-top: 25px;
+
+            color: #77879a;
+
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+
+            .thank-you-page {
+                padding:
+                    105px 15px
+                    50px;
+            }
+
+            .thank-you-card {
+                padding:
+                    40px 22px;
+
+                border-radius: 18px;
+            }
+
+            .success-icon {
+                width: 70px;
+                height: 70px;
+
+                font-size: 34px;
+            }
+
+            .thank-you-card > p {
+                font-size: 14px;
+            }
+
+            .thank-you-actions {
+                flex-direction: column;
+            }
+
+            .thank-you-actions .btn-primary,
+            .thank-you-actions .btn-secondary {
+                width: 100%;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header id="main-header">
+
+        <div class="container header-container">
+
+            <a
+                href="index.html"
+                class="logo"
+                aria-label="Assistência Técnica"
+            >
+
+                <img
+                    src="assets/logo.png"
+                    alt="Assistência Técnica"
+                >
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         PÁGINA DE CONFIRMAÇÃO
+    ====================================================== -->
+
+    <main class="thank-you-page">
+
+        <div class="thank-you-card">
+
+
+            <!-- ÍCONE -->
+
+            <div
+                class="success-icon"
+                aria-hidden="true"
+            >
+                ✓
+            </div>
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+
+                Solicitação
+                <span>recebida!</span>
+
+            </h1>
+
+
+            <!-- MENSAGEM -->
+
+            <p>
+
+                Obrigado por entrar em contato.
+                Recebemos seus dados com sucesso.
+
+                <br><br>
+
+                Nossa equipe irá analisar sua solicitação
+                e entrar em contato com você.
+
+            </p>
+
+
+            <!-- BOTÕES -->
+
+            <div class="thank-you-actions">
+
+
+                <a
+                    href="#"
+                    class="btn-primary js-wa-link"
+                    data-whatsapp-message="Olá! Acabei de enviar uma solicitação pelo site e gostaria de continuar meu atendimento."
+                >
+
+                    💬 Falar pelo WhatsApp
+
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="btn-secondary"
+                >
+
+                    ← Voltar ao site
+
+                </a>
+
+
+            </div>
+
+
+            <p class="thank-you-note">
+
+                Se precisar de atendimento mais rápido,
+                fale conosco pelo WhatsApp.
+
+            </p>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+
+            ©
+            <span id="ano">
+                2026
+            </span>
+
+            Assistência Técnica.
+            Todos os direitos reservados.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         SCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- =====================================================
+         ANO AUTOMÁTICO
+    ====================================================== -->
+
+    <script>
+
+        const ano = document.getElementById("ano");
+
+        if (ano) {
+            ano.textContent = new Date().getFullYear();
+        }
+
+    </script>
+
+
+</body>
+
+</html>
