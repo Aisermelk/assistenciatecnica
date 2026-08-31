@@ -10,9 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        Solicitação recebida | Assistência Técnica
-    </title>
+    <title>Solicitação recebida | Assistência Técnica</title>
 
     <meta
         name="description"
@@ -21,18 +19,13 @@
 
     <meta
         name="theme-color"
-        content="#070B12"
+        content="#060b14"
     >
 
     <link
         rel="icon"
         href="assets/favicon.png"
         type="image/png"
-    >
-
-    <link
-        rel="stylesheet"
-        href="style.css"
     >
 
     <link
@@ -53,9 +46,19 @@
 
     <style>
 
-        /* =====================================================
-           PÁGINA DE OBRIGADO
-        ====================================================== */
+        /* =========================================================
+           RESET
+           ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             min-height: 100vh;
@@ -63,31 +66,189 @@
             display: flex;
             flex-direction: column;
 
+            font-family: "Poppins", Arial, sans-serif;
+
             background:
                 radial-gradient(
-                    circle at 50% 20%,
+                    circle at 15% 25%,
                     rgba(8, 217, 255, 0.10),
-                    transparent 38%
+                    transparent 35%
                 ),
-                #060b14;
+                radial-gradient(
+                    circle at 85% 70%,
+                    rgba(37, 211, 102, 0.06),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #07101d 0%,
+                    #060b14 100%
+                );
+
+            color: #ffffff;
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
         }
 
-        .thank-you-page {
-            flex: 1;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================================
+           VARIÁVEIS
+           ========================================================= */
+
+        :root {
+            --blue: #08d9ff;
+            --green: #25d366;
+
+            --background: #060b14;
+            --card: #0e1826;
+
+            --white: #ffffff;
+            --text-soft: #a8b6c7;
+            --text-muted: #77879a;
+
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        header {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 78px;
+
+            z-index: 1000;
+
+            background:
+                rgba(6, 11, 20, 0.82);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .container {
+            width:
+                min(
+                    1180px,
+                    calc(100% - 40px)
+                );
+
+            margin: 0 auto;
+        }
+
+        .header-container {
+            height: 100%;
 
             display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+
+            align-items: center;
+        }
+
+        .logo img {
+            width: auto;
+
+            max-width: 190px;
+            max-height: 55px;
+
+            object-fit: contain;
+        }
+
+        /* =========================================================
+           PÁGINA
+           ========================================================= */
+
+        .thank-you-page {
+            position: relative;
+
+            flex: 1;
+
+            min-height: 100vh;
+
+            display: flex;
+
             align-items: center;
             justify-content: center;
 
             padding:
-                120px 20px
-                70px;
+                130px 20px
+                80px;
+
+            overflow: hidden;
         }
 
-        .thank-you-card {
-            width: min(620px, 100%);
+        /* brilho decorativo */
 
-            padding: 55px 40px;
+        .thank-you-page::before {
+            content: "";
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(8, 217, 255, 0.10),
+                    transparent 68%
+                );
+
+            filter: blur(25px);
+
+            pointer-events: none;
+        }
+
+        /* =========================================================
+           CARD
+           ========================================================= */
+
+        .thank-you-card {
+            position: relative;
+
+            z-index: 2;
+
+            width:
+                min(
+                    650px,
+                    100%
+                );
+
+            padding:
+                55px 45px;
 
             text-align: center;
 
@@ -99,19 +260,51 @@
                 );
 
             border:
-                1px solid rgba(255, 255, 255, 0.08);
+                1px solid rgba(255, 255, 255, 0.09);
 
             border-radius: 24px;
 
             box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.45);
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+            overflow: hidden;
         }
 
-        .success-icon {
-            width: 82px;
-            height: 82px;
+        /* linha superior */
 
-            margin: 0 auto 25px;
+        .thank-you-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 3px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--blue),
+                    transparent
+                );
+
+            opacity: 0.9;
+        }
+
+        /* =========================================================
+           ÍCONE DE SUCESSO
+           ========================================================= */
+
+        .success-icon {
+            width: 84px;
+            height: 84px;
+
+            margin:
+                0 auto 26px;
 
             display: flex;
 
@@ -121,52 +314,85 @@
             border-radius: 50%;
 
             background:
-                rgba(37, 211, 102, 0.12);
+                rgba(37, 211, 102, 0.11);
 
             border:
-                1px solid rgba(37, 211, 102, 0.25);
+                1px solid rgba(37, 211, 102, 0.28);
 
-            color: #25d366;
+            color: var(--green);
 
             font-size: 42px;
 
-            font-weight: 700;
+            font-weight: 800;
 
             box-shadow:
                 0 0 35px rgba(37, 211, 102, 0.10);
+
+            animation:
+                successAppear 0.6s ease both;
         }
+
+        @keyframes successAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        /* =========================================================
+           TÍTULO
+           ========================================================= */
 
         .thank-you-card h1 {
             margin-bottom: 18px;
 
-            color: #ffffff;
+            color: var(--white);
 
             font-size:
-                clamp(2rem, 5vw, 3rem);
+                clamp(
+                    2.1rem,
+                    5vw,
+                    3.2rem
+                );
 
-            line-height: 1.15;
+            line-height: 1.12;
 
             font-weight: 800;
 
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
         }
 
         .thank-you-card h1 span {
-            color: #08d9ff;
+            color: var(--blue);
         }
 
-        .thank-you-card > p {
-            max-width: 500px;
+        /* =========================================================
+           TEXTO
+           ========================================================= */
+
+        .thank-you-message {
+            max-width: 520px;
 
             margin:
-                0 auto 30px;
+                0 auto 32px;
 
-            color: #a8b6c7;
+            color: var(--text-soft);
 
             font-size: 16px;
 
-            line-height: 1.7;
+            line-height: 1.75;
         }
+
+        /* =========================================================
+           AÇÕES
+           ========================================================= */
 
         .thank-you-actions {
             display: flex;
@@ -176,46 +402,178 @@
 
             flex-wrap: wrap;
 
-            gap: 12px;
+            gap: 13px;
         }
 
-        .thank-you-actions .btn-primary,
-        .thank-you-actions .btn-secondary {
-            min-width: 210px;
+        .btn-primary,
+        .btn-secondary {
+            min-height: 52px;
+
+            padding:
+                13px 24px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
         }
+
+        /* WhatsApp */
+
+        .btn-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #25d366,
+                    #18b957
+                );
+
+            color: #ffffff;
+
+            box-shadow:
+                0 12px 30px
+                rgba(37, 211, 102, 0.20);
+        }
+
+        .btn-primary:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 18px 38px
+                rgba(37, 211, 102, 0.30);
+        }
+
+        /* Voltar */
+
+        .btn-secondary {
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid var(--border);
+
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(8, 217, 255, 0.35);
+
+            background:
+                rgba(8, 217, 255, 0.07);
+        }
+
+        /* =========================================================
+           AVISO
+           ========================================================= */
 
         .thank-you-note {
             margin-top: 25px;
 
-            color: #77879a;
+            color: var(--text-muted);
 
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        footer {
+            padding:
+                30px 20px;
+
+            text-align: center;
+
+            background:
+                #040810;
+
+            border-top:
+                1px solid var(--border);
+
+            color:
+                var(--text-muted);
+        }
+
+        footer p {
             font-size: 12px;
         }
 
-        @media (max-width: 600px) {
+        /* =========================================================
+           FOCO
+           ========================================================= */
+
+        :focus-visible {
+            outline:
+                2px solid var(--blue);
+
+            outline-offset: 3px;
+        }
+
+        /* =========================================================
+           TABLET
+           ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width:
+                    calc(100% - 30px);
+            }
+
+            header {
+                height: 68px;
+            }
+
+            .logo img {
+                max-width: 145px;
+                max-height: 45px;
+            }
 
             .thank-you-page {
                 padding:
                     105px 15px
-                    50px;
+                    55px;
             }
 
             .thank-you-card {
                 padding:
-                    40px 22px;
+                    45px 25px;
 
-                border-radius: 18px;
+                border-radius: 20px;
             }
 
             .success-icon {
-                width: 70px;
-                height: 70px;
+                width: 74px;
+                height: 74px;
 
-                font-size: 34px;
+                font-size: 36px;
             }
 
-            .thank-you-card > p {
-                font-size: 14px;
+            .thank-you-card h1 {
+                font-size: 2.25rem;
+            }
+
+            .thank-you-message {
+                font-size: 15px;
             }
 
             .thank-you-actions {
@@ -226,6 +584,72 @@
             .thank-you-actions .btn-secondary {
                 width: 100%;
             }
+
+        }
+
+        /* =========================================================
+           CELULAR PEQUENO
+           ========================================================= */
+
+        @media (max-width: 400px) {
+
+            .container {
+                width:
+                    calc(100% - 24px);
+            }
+
+            .logo img {
+                max-width: 125px;
+            }
+
+            .thank-you-page {
+                padding:
+                    100px 12px
+                    45px;
+            }
+
+            .thank-you-card {
+                padding:
+                    38px 18px;
+
+                border-radius: 18px;
+            }
+
+            .success-icon {
+                width: 68px;
+                height: 68px;
+
+                font-size: 32px;
+            }
+
+            .thank-you-card h1 {
+                font-size: 2rem;
+            }
+
+            .thank-you-message {
+                font-size: 14px;
+            }
+
+        }
+
+        /* =========================================================
+           REDUZIR MOVIMENTO
+           ========================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
         }
 
     </style>
@@ -236,9 +660,9 @@
 <body>
 
 
-    <!-- =====================================================
-         CABEÇALHO
-    ====================================================== -->
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
 
     <header id="main-header">
 
@@ -247,7 +671,7 @@
             <a
                 href="index.html"
                 class="logo"
-                aria-label="Assistência Técnica"
+                aria-label="Voltar para o início"
             >
 
                 <img
@@ -262,14 +686,16 @@
     </header>
 
 
-    <!-- =====================================================
-         PÁGINA DE CONFIRMAÇÃO
-    ====================================================== -->
+    <!-- =========================================================
+         CONTEÚDO
+         ========================================================= -->
 
     <main class="thank-you-page">
 
-        <div class="thank-you-card">
-
+        <section
+            class="thank-you-card"
+            aria-labelledby="thank-you-title"
+        >
 
             <!-- ÍCONE -->
 
@@ -283,7 +709,7 @@
 
             <!-- TÍTULO -->
 
-            <h1>
+            <h1 id="thank-you-title">
 
                 Solicitação
                 <span>recebida!</span>
@@ -293,7 +719,7 @@
 
             <!-- MENSAGEM -->
 
-            <p>
+            <p class="thank-you-message">
 
                 Obrigado por entrar em contato.
                 Recebemos seus dados com sucesso.
@@ -310,15 +736,13 @@
 
             <div class="thank-you-actions">
 
-
                 <a
                     href="#"
                     class="btn-primary js-wa-link"
                     data-whatsapp-message="Olá! Acabei de enviar uma solicitação pelo site e gostaria de continuar meu atendimento."
+                    aria-label="Continuar atendimento pelo WhatsApp"
                 >
-
-                    💬 Falar pelo WhatsApp
-
+                    Falar pelo WhatsApp
                 </a>
 
 
@@ -326,14 +750,13 @@
                     href="index.html"
                     class="btn-secondary"
                 >
-
-                    ← Voltar ao site
-
+                    Voltar ao site
                 </a>
-
 
             </div>
 
+
+            <!-- OBSERVAÇÃO -->
 
             <p class="thank-you-note">
 
@@ -342,51 +765,200 @@
 
             </p>
 
-
-        </div>
+        </section>
 
     </main>
 
 
-    <!-- =====================================================
-         RODAPÉ
-    ====================================================== -->
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
 
     <footer>
 
         <p>
-
             ©
-            <span id="ano">
-                2026
-            </span>
-
+            <span id="ano"></span>
             Assistência Técnica.
             Todos os direitos reservados.
-
         </p>
 
     </footer>
 
 
-    <!-- =====================================================
-         SCRIPT
-    ====================================================== -->
+    <!-- =========================================================
+         V8 ADMIN UNIVERSAL — LOADER
+         ========================================================= -->
 
-    <script src="script.js"></script>
+    <script
+        src="js/v8-loader.js"
+        data-project-id="ba89f806-64b6-430c-9e91-f93a4c6ac585"
+    ></script>
 
 
-    <!-- =====================================================
-         ANO AUTOMÁTICO
-    ====================================================== -->
+    <!-- =========================================================
+         SCRIPT DA PÁGINA
+         ========================================================= -->
 
     <script>
 
-        const ano = document.getElementById("ano");
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
 
-        if (ano) {
-            ano.textContent = new Date().getFullYear();
-        }
+                /* -----------------------------------------------
+                   ANO
+                ------------------------------------------------ */
+
+                const ano =
+                    document.getElementById("ano");
+
+                if (ano) {
+                    ano.textContent =
+                        new Date().getFullYear();
+                }
+
+
+                /* -----------------------------------------------
+                   WHATSAPP
+                   Usa o mesmo número configurado no V8 Admin
+                ------------------------------------------------ */
+
+                const whatsappButton =
+                    document.querySelector(".js-wa-link");
+
+                if (!whatsappButton) {
+                    return;
+                }
+
+                whatsappButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        const message =
+                            whatsappButton.dataset.whatsappMessage ||
+                            "Olá! Acabei de enviar uma solicitação pelo site e gostaria de continuar meu atendimento.";
+
+                        let number = "";
+
+                        /*
+                         * Primeiro tenta utilizar a API
+                         * pública do V8 Loader.
+                         */
+
+                        if (
+                            window.AssistenciaTecnica &&
+                            typeof
+                            window.AssistenciaTecnica
+                                .getWhatsAppNumber === "function"
+                        ) {
+
+                            number =
+                                window.AssistenciaTecnica
+                                    .getWhatsAppNumber();
+
+                        }
+
+                        /*
+                         * Compatibilidade com o Loader
+                         */
+
+                        if (!number) {
+
+                            const values = [
+
+                                window.WHATSAPP_NUMBER,
+
+                                document.body.dataset.whatsapp,
+
+                                localStorage.getItem(
+                                    "whatsappNumber"
+                                )
+
+                            ];
+
+                            for (
+                                const value
+                                of values
+                            ) {
+
+                                const digits =
+                                    String(
+                                        value || ""
+                                    ).replace(
+                                        /\D/g,
+                                        ""
+                                    );
+
+                                if (
+                                    digits.length >= 10
+                                ) {
+
+                                    number =
+                                        digits;
+
+                                    break;
+
+                                }
+
+                            }
+
+                        }
+
+
+                        if (!number) {
+
+                            alert(
+                                "O WhatsApp ainda não foi configurado. Entre em contato com o administrador do site."
+                            );
+
+                            return;
+
+                        }
+
+
+                        const url =
+                            `https://wa.me/${number}?text=${encodeURIComponent(
+                                message
+                            )}`;
+
+
+                        /*
+                         * Rastreamento
+                         */
+
+                        if (
+                            window.AssistenciaTecnica &&
+                            typeof
+                            window.AssistenciaTecnica
+                                .trackEvent === "function"
+                        ) {
+
+                            window.AssistenciaTecnica
+                                .trackEvent(
+                                    "thank_you_whatsapp_click",
+                                    {
+                                        source:
+                                            "thank_you_page"
+                                    }
+                                );
+
+                        }
+
+
+                        window.open(
+                            url,
+                            "_blank",
+                            "noopener,noreferrer"
+                        );
+
+                    }
+                );
+
+            }
+        );
 
     </script>
 
