@@ -1,99 +1,151 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>
-    Seu BTV parou de funcionar? | Assistência Técnica
-</title>
+    <title>
+        Seu BTV parou de funcionar? | Assistência Técnica
+    </title>
 
-<meta
-    name="description"
-    content="Assistência e suporte técnico para aparelhos BTV. Receba orientação para problemas, configurações, atualizações e travamentos."
->
+    <meta
+        name="description"
+        content="Assistência e suporte técnico para aparelhos BTV. Receba orientação para problemas, configurações, atualizações e travamentos."
+    >
 
-<meta
-    name="theme-color"
-    content="#070A0F"
->
+    <meta
+        name="theme-color"
+        content="#0B5ED7"
+    >
 
-<link
-    rel="icon"
-    href="assets/favicon.png"
-    type="image/png"
->
+    <link
+        rel="icon"
+        href="assets/favicon.png"
+        type="image/png"
+    >
 
-<!-- =====================================================
-     FONTES
-====================================================== -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
->
-
-<!-- =====================================================
-     CSS
-====================================================== -->
-
-<link
-    rel="stylesheet"
-    href="css/style.css"
->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
 </head>
 
+
 <body>
 
-<!-- =====================================================
-     CABEÇALHO
-====================================================== -->
 
 <header id="main-header">
 
-<div class="container header-container">
+    <div class="container header-container">
 
 
-    <!-- LOGO -->
-
-    <a
-        href="#hero"
-        class="logo"
-        aria-label="Assistência Técnica"
-    >
-
-        <img
-            src="assets/logo.png"
-            alt="Assistência Técnica"
+        <a
+            href="#hero"
+            class="logo"
+            aria-label="Assistência Técnica"
         >
 
-    </a>
+            <img
+                src="assets/logo.png"
+                alt="Assistência Técnica"
+            >
+
+        </a>
 
 
-    <!-- MENU DESKTOP -->
+        <nav
+            class="main-nav"
+            aria-label="Navegação principal"
+        >
+
+            <a href="#hero">
+                Início
+            </a>
+
+            <a href="#services">
+                Serviços
+            </a>
+
+            <a href="#how-it-works">
+                Como funciona
+            </a>
+
+            <a href="#formulario">
+                Atendimento
+            </a>
+
+            <a href="#faq">
+                FAQ
+            </a>
+
+        </nav>
+
+
+        <a
+            href="#"
+            class="btn-header"
+            data-v8="contact.whatsapp"
+            data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
+            aria-label="Falar no WhatsApp"
+        >
+
+            <span class="icon">
+                ◉
+            </span>
+
+            Falar no WhatsApp
+
+            <span aria-hidden="true">
+                ↗
+            </span>
+
+        </a>
+
+
+        <button
+            type="button"
+            class="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
+
 
     <nav
-        class="main-nav"
-        aria-label="Navegação principal"
+        id="mobile-menu"
+        class="mobile-menu"
+        aria-label="Menu mobile"
     >
 
         <a href="#hero">
@@ -116,118 +168,37 @@
             FAQ
         </a>
 
+        <a
+            href="#"
+            class="mobile-whatsapp"
+            data-v8="contact.whatsapp"
+            data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
+        >
+
+            Falar no WhatsApp
+
+            <span aria-hidden="true">
+                ↗
+            </span>
+
+        </a>
+
     </nav>
-
-
-    <!-- BOTÃO WHATSAPP -->
-
-    <a
-        href="#"
-        class="btn-header"
-        data-v8="contact.whatsapp"
-        data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
-        aria-label="Falar no WhatsApp"
-    >
-
-        Falar no WhatsApp
-
-        <span aria-hidden="true">
-            ↗
-        </span>
-
-    </a>
-
-
-    <!-- MENU MOBILE -->
-
-    <button
-        type="button"
-        class="menu-toggle"
-        aria-label="Abrir menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-    >
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
-
-</div>
-
-
-<!-- =================================================
-     MENU MOBILE
-================================================== -->
-
-<nav
-    id="mobile-menu"
-    class="mobile-menu"
-    aria-label="Menu mobile"
->
-
-    <a href="#hero">
-        Início
-    </a>
-
-    <a href="#services">
-        Serviços
-    </a>
-
-    <a href="#how-it-works">
-        Como funciona
-    </a>
-
-    <a href="#formulario">
-        Atendimento
-    </a>
-
-    <a href="#faq">
-        FAQ
-    </a>
-
-    <a
-        href="#"
-        data-v8="contact.whatsapp"
-        data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
-        class="mobile-whatsapp"
-    >
-
-        Falar no WhatsApp
-
-        <span aria-hidden="true">
-            ↗
-        </span>
-
-    </a>
-
-</nav>
 
 </header>
 
-<!-- =====================================================
-     CONTEÚDO PRINCIPAL
-====================================================== -->
+
 
 <main>
 
-<!-- =====================================================
-     HERO
-====================================================== -->
 
 <section
     id="hero"
     class="hero-section"
 >
 
-<div class="hero-grid">
-
     <div class="container hero-container">
 
-
-        <!-- TEXTO -->
 
         <div class="hero-left">
 
@@ -263,11 +234,14 @@
 
             <div class="hero-buttons">
 
-
                 <a
                     href="#formulario"
                     class="btn-primary"
                 >
+
+                    <span class="button-icon">
+                        ⚙
+                    </span>
 
                     SOLICITAR ATENDIMENTO
 
@@ -283,10 +257,13 @@
                     class="btn-secondary"
                 >
 
+                    <span class="button-icon">
+                        ◇
+                    </span>
+
                     VER COMO PODEMOS AJUDAR
 
                 </a>
-
 
             </div>
 
@@ -339,9 +316,6 @@
         </div>
 
 
-
-        <!-- IMAGEM -->
-
         <div class="hero-right">
 
             <div class="hero-image-glow"></div>
@@ -363,416 +337,683 @@
 
     </div>
 
-</div>
-
 </section>
 
-<!-- =====================================================
-     SERVIÇOS
-====================================================== -->
+
 
 <section
     id="services"
     class="content-section services-section"
 >
 
-<div class="container">
+    <div class="container">
 
 
-    <div class="section-heading">
+        <div class="section-heading">
 
 
-        <div class="section-index">
-            <span>01</span>
+            <div class="section-icon">
+                ⚙
+            </div>
+
+
+            <div class="section-heading-text">
+
+                <span class="section-label">
+                    COMO PODEMOS AJUDAR
+                </span>
+
+                <h2>
+                    Suporte para o seu aparelho.
+                </h2>
+
+                <p>
+                    Identifique o problema e veja como
+                    podemos orientar você.
+                </p>
+
+            </div>
+
+
         </div>
 
 
-        <div class="section-heading-text">
 
-            <span class="section-label">
-                COMO PODEMOS AJUDAR
-            </span>
+        <div class="services-list">
 
-            <h2>
-                Suporte para o seu aparelho.
-            </h2>
 
-            <p>
-                Identifique o problema e veja como
-                podemos orientar você.
-            </p>
+            <article class="service-item">
+
+
+                <div class="service-icon">
+                    🔧
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-tag">
+                        DIAGNÓSTICO
+                    </span>
+
+                    <h3>
+                        BTV parou de funcionar
+                    </h3>
+
+                    <p>
+                        Seu aparelho apresenta erro,
+                        não carrega ou deixou de funcionar?
+                        Conte o que aconteceu para receber
+                        orientação.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="#formulario"
+                    class="service-link"
+                    aria-label="Solicitar atendimento para BTV que parou de funcionar"
+                >
+                    →
+                </a>
+
+
+            </article>
+
+
+
+            <article class="service-item">
+
+
+                <div class="service-icon">
+                    ⚙
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-tag">
+                        CONFIGURAÇÃO
+                    </span>
+
+                    <h3>
+                        Atualização e configuração
+                    </h3>
+
+                    <p>
+                        Suporte para atualização,
+                        configuração e ajustes compatíveis
+                        com o seu aparelho.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="#formulario"
+                    class="service-link"
+                    aria-label="Solicitar atendimento para atualização e configuração"
+                >
+                    →
+                </a>
+
+
+            </article>
+
+
+
+            <article class="service-item">
+
+
+                <div class="service-icon">
+                    🛠
+                </div>
+
+
+                <div class="service-content">
+
+                    <span class="service-tag">
+                        SUPORTE
+                    </span>
+
+                    <h3>
+                        Travamentos e erros
+                    </h3>
+
+                    <p>
+                        Conte o que está acontecendo e
+                        receba orientação sobre os próximos
+                        passos.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="#formulario"
+                    class="service-link"
+                    aria-label="Solicitar atendimento para travamentos e erros"
+                >
+                    →
+                </a>
+
+
+            </article>
+
 
         </div>
 
 
     </div>
-
-
-
-    <div class="services-list">
-
-
-        <!-- SERVIÇO 01 -->
-
-        <article class="service-item">
-
-
-            <div class="service-number">
-                01
-            </div>
-
-
-            <div class="service-content">
-
-                <span class="service-tag">
-                    DIAGNÓSTICO
-                </span>
-
-                <h3>
-                    BTV parou de funcionar
-                </h3>
-
-                <p>
-
-                    Seu aparelho apresenta erro,
-                    não carrega ou deixou de funcionar?
-                    Conte o que aconteceu para receber
-                    orientação.
-
-                </p>
-
-            </div>
-
-
-            <a
-                href="#formulario"
-                class="service-link"
-                aria-label="Solicitar atendimento para BTV que parou de funcionar"
-            >
-
-                →
-
-            </a>
-
-
-        </article>
-
-
-
-        <!-- SERVIÇO 02 -->
-
-        <article class="service-item">
-
-
-            <div class="service-number">
-                02
-            </div>
-
-
-            <div class="service-content">
-
-                <span class="service-tag">
-                    CONFIGURAÇÃO
-                </span>
-
-                <h3>
-                    Atualização e configuração
-                </h3>
-
-                <p>
-
-                    Suporte para atualização,
-                    configuração e ajustes compatíveis
-                    com o seu aparelho.
-
-                </p>
-
-            </div>
-
-
-            <a
-                href="#formulario"
-                class="service-link"
-                aria-label="Solicitar atendimento para atualização e configuração"
-            >
-
-                →
-
-            </a>
-
-
-        </article>
-
-
-
-        <!-- SERVIÇO 03 -->
-
-        <article class="service-item">
-
-
-            <div class="service-number">
-                03
-            </div>
-
-
-            <div class="service-content">
-
-                <span class="service-tag">
-                    SUPORTE
-                </span>
-
-                <h3>
-                    Travamentos e erros
-                </h3>
-
-                <p>
-
-                    Conte o que está acontecendo e
-                    receba orientação sobre os próximos
-                    passos.
-
-                </p>
-
-            </div>
-
-
-            <a
-                href="#formulario"
-                class="service-link"
-                aria-label="Solicitar atendimento para travamentos e erros"
-            >
-
-                →
-
-            </a>
-
-
-        </article>
-
-
-    </div>
-
-
-</div>
 
 </section>
 
-<!-- =====================================================
-     COMO FUNCIONA
-====================================================== -->
+
 
 <section
     id="how-it-works"
     class="content-section how-section"
 >
 
-<div class="container">
+    <div class="container">
 
 
-    <div class="section-heading">
+        <div class="section-heading">
 
 
-        <div class="section-index">
-            <span>02</span>
+            <div class="section-icon">
+                ✓
+            </div>
+
+
+            <div class="section-heading-text">
+
+                <span class="section-label">
+                    É SIMPLES
+                </span>
+
+                <h2>
+                    Como funciona?
+                </h2>
+
+                <p>
+                    Um atendimento simples e direto.
+                </p>
+
+            </div>
+
+
         </div>
 
 
-        <div class="section-heading-text">
 
-            <span class="section-label">
-                É SIMPLES
-            </span>
+        <div class="steps-grid">
 
-            <h2>
-                Como funciona?
-            </h2>
 
-            <p>
-                Um atendimento simples e direto.
-            </p>
+            <article class="step">
+
+                <div class="step-top">
+
+                    <span class="step-number">
+                        01
+                    </span>
+
+                    <span class="step-line"></span>
+
+                </div>
+
+                <h3>
+                    Você explica
+                </h3>
+
+                <p>
+                    Preencha seus dados e conte
+                    o que está acontecendo com
+                    seu aparelho.
+                </p>
+
+            </article>
+
+
+
+            <article class="step">
+
+                <div class="step-top">
+
+                    <span class="step-number">
+                        02
+                    </span>
+
+                    <span class="step-line"></span>
+
+                </div>
+
+                <h3>
+                    Nós analisamos
+                </h3>
+
+                <p>
+                    Recebemos sua solicitação
+                    e verificamos as informações
+                    enviadas.
+                </p>
+
+            </article>
+
+
+
+            <article class="step">
+
+                <div class="step-top">
+
+                    <span class="step-number">
+                        03
+                    </span>
+
+                    <span class="step-line"></span>
+
+                </div>
+
+                <h3>
+                    Entramos em contato
+                </h3>
+
+                <p>
+                    Nossa equipe entra em contato
+                    para continuar o atendimento.
+                </p>
+
+            </article>
+
 
         </div>
 
 
     </div>
-
-
-
-    <div class="steps-grid">
-
-
-        <!-- PASSO 01 -->
-
-        <article class="step">
-
-            <div class="step-top">
-
-                <span class="step-number">
-                    01
-                </span>
-
-                <span class="step-line"></span>
-
-            </div>
-
-
-            <h3>
-                Você explica
-            </h3>
-
-
-            <p>
-
-                Preencha seus dados e conte
-                o que está acontecendo com
-                seu aparelho.
-
-            </p>
-
-        </article>
-
-
-
-        <!-- PASSO 02 -->
-
-        <article class="step">
-
-            <div class="step-top">
-
-                <span class="step-number">
-                    02
-                </span>
-
-                <span class="step-line"></span>
-
-            </div>
-
-
-            <h3>
-                Nós analisamos
-            </h3>
-
-
-            <p>
-
-                Recebemos sua solicitação
-                e verificamos as informações
-                enviadas.
-
-            </p>
-
-        </article>
-
-
-
-        <!-- PASSO 03 -->
-
-        <article class="step">
-
-            <div class="step-top">
-
-                <span class="step-number">
-                    03
-                </span>
-
-                <span class="step-line"></span>
-
-            </div>
-
-
-            <h3>
-                Entramos em contato
-            </h3>
-
-
-            <p>
-
-                Nossa equipe entra em contato
-                para continuar o atendimento.
-
-            </p>
-
-        </article>
-
-
-    </div>
-
-
-</div>
 
 </section>
 
-<!-- =====================================================
-     FORMULÁRIO
-====================================================== -->
+
 
 <section
     id="formulario"
     class="lead-section"
 >
 
-<div class="container form-container">
+    <div class="container form-container">
 
 
-    <!-- TEXTO -->
-
-    <div class="form-intro">
+        <div class="form-intro">
 
 
-        <span class="section-label">
-            03 · FALE COM A EQUIPE
-        </span>
+            <div class="section-icon">
+                ✦
+            </div>
 
 
-        <h2>
-
-            Conte o que
-            <span>aconteceu.</span>
-
-        </h2>
+            <span class="section-label">
+                FALE COM A EQUIPE
+            </span>
 
 
-        <p>
-
-            Seu aparelho apresentou algum problema?
-            Envie seus dados e explique brevemente
-            o que está acontecendo.
-
-        </p>
-
-
-        <div class="form-notes">
-
-
-            <div class="form-note">
-
+            <h2>
+                Conte o que
                 <span>
-                    ✓
+                    aconteceu.
                 </span>
+            </h2>
 
-                Atendimento remoto
+
+            <p>
+                Seu aparelho apresentou algum problema?
+                Envie seus dados e explique brevemente
+                o que está acontecendo.
+            </p>
+
+
+            <div class="form-notes">
+
+
+                <div class="form-note">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    Atendimento remoto
+
+                </div>
+
+
+                <div class="form-note">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    Orientação especializada
+
+                </div>
+
+
+                <div class="form-note">
+
+                    <span>
+                        ✓
+                    </span>
+
+                    Retorno pelo WhatsApp
+
+                </div>
+
 
             </div>
 
 
-            <div class="form-note">
+        </div>
 
-                <span>
-                    ✓
-                </span>
 
-                Orientação especializada
+
+        <form
+            action=""
+            method="POST"
+            class="lead-form"
+            data-v8-form
+        >
+
+
+            <div class="form-group">
+
+                <label for="nome">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome"
+                    autocomplete="name"
+                    required
+                >
 
             </div>
 
 
-            <div class="form-note">
+            <div class="form-group">
 
-                <span>
-                    ✓
+                <label for="whatsapp">
+                    WhatsApp
+                </label>
+
+                <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    placeholder="(00) 00000-0000"
+                    autocomplete="tel"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="seuemail@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="modelo">
+                    Modelo do aparelho
+                </label>
+
+                <input
+                    type="text"
+                    id="modelo"
+                    name="modelo"
+                    placeholder="Ex.: BTV"
+                    required
+                >
+
+            </div>
+
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="Novo lead - Assistência Técnica"
+            >
+
+
+            <input
+                type="hidden"
+                name="v8_project_id"
+                value="6e3c3f6c-1b93-4e05-874b-174327592152"
+            >
+
+
+            <button
+                type="submit"
+                class="btn-primary form-submit"
+            >
+
+                SOLICITAR ATENDIMENTO
+
+                <span aria-hidden="true">
+                    →
                 </span>
 
-                Retorno pelo WhatsApp
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+</section>
+
+
+
+<section
+    id="faq"
+    class="content-section faq-section"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+
+            <div class="section-icon">
+                ?
+            </div>
+
+
+            <div class="section-heading-text">
+
+                <span class="section-label">
+                    DÚVIDAS
+                </span>
+
+                <h2>
+                    Perguntas frequentes.
+                </h2>
+
+                <p>
+                    Encontre respostas para as dúvidas
+                    mais comuns sobre o atendimento.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="faq-list">
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span>
+                        Meu BTV parou de funcionar.
+                        Vocês podem ajudar?
+                    </span>
+
+                    <span
+                        class="faq-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Sim. Preencha o formulário
+                        acima com os dados do aparelho
+                        e nossa equipe poderá entrar
+                        em contato para orientar você.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span>
+                        Preciso enviar meu aparelho?
+                    </span>
+
+                    <span
+                        class="faq-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        O atendimento é realizado
+                        remotamente, através de
+                        orientação e suporte.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span>
+                        Vocês atendem outros modelos?
+                    </span>
+
+                    <span
+                        class="faq-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Informe o modelo do seu aparelho
+                        no formulário e nossa equipe
+                        poderá verificar como podemos
+                        ajudar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="faq-item">
+
+                <button
+                    class="faq-question"
+                    type="button"
+                    aria-expanded="false"
+                >
+
+                    <span>
+                        Como faço para solicitar atendimento?
+                    </span>
+
+                    <span
+                        class="faq-icon"
+                        aria-hidden="true"
+                    >
+                        +
+                    </span>
+
+                </button>
+
+
+                <div class="faq-answer">
+
+                    <p>
+                        Basta preencher o formulário
+                        com seus dados e clicar em
+                        "Solicitar atendimento".
+                    </p>
+
+                </div>
 
             </div>
 
@@ -782,122 +1023,45 @@
 
     </div>
 
+</section>
 
 
-    <!-- =================================================
-         FORMULÁRIO V8 ADMIN UNIVERSAL
-    ================================================== -->
 
-    <form
-        action=""
-        method="POST"
-        class="lead-form"
-        data-v8-form
-    >
+<section
+    id="cta"
+    class="final-cta"
+>
+
+    <div class="container cta-container">
 
 
-        <!-- NOME -->
-
-        <div class="form-group">
-
-            <label for="nome">
-                Nome
-            </label>
-
-            <input
-                type="text"
-                id="nome"
-                name="nome"
-                placeholder="Digite seu nome"
-                autocomplete="name"
-                required
-            >
-
+        <div class="cta-icon">
+            ✓
         </div>
 
 
-        <!-- WHATSAPP -->
-
-        <div class="form-group">
-
-            <label for="whatsapp">
-                WhatsApp
-            </label>
-
-            <input
-                type="tel"
-                id="whatsapp"
-                name="whatsapp"
-                placeholder="(00) 00000-0000"
-                autocomplete="tel"
-                required
-            >
-
-        </div>
+        <span class="section-label">
+            PRECISA DE AJUDA?
+        </span>
 
 
-        <!-- E-MAIL -->
-
-        <div class="form-group">
-
-            <label for="email">
-                E-mail
-            </label>
-
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="seuemail@email.com"
-                autocomplete="email"
-                required
-            >
-
-        </div>
+        <h2>
+            Vamos encontrar
+            <span>
+                uma solução.
+            </span>
+        </h2>
 
 
-        <!-- MODELO -->
-
-        <div class="form-group">
-
-            <label for="modelo">
-                Modelo do aparelho
-            </label>
-
-            <input
-                type="text"
-                id="modelo"
-                name="modelo"
-                placeholder="Ex.: BTV"
-                required
-            >
-
-        </div>
+        <p>
+            Conte o que aconteceu com seu aparelho
+            e fale com nossa equipe.
+        </p>
 
 
-        <!-- ASSUNTO -->
-
-        <input
-            type="hidden"
-            name="_subject"
-            value="Novo lead - Assistência Técnica"
-        >
-
-
-        <!-- ID DO PROJETO -->
-
-        <input
-            type="hidden"
-            name="v8_project_id"
-            value="6e3c3f6c-1b93-4e05-874b-174327592152"
-        >
-
-
-        <!-- BOTÃO -->
-
-        <button
-            type="submit"
-            class="btn-primary form-submit"
+        <a
+            href="#formulario"
+            class="btn-primary"
         >
 
             SOLICITAR ATENDIMENTO
@@ -906,409 +1070,123 @@
                 →
             </span>
 
-        </button>
-
-
-    </form>
-
-
-</div>
-
-</section>
-
-<!-- =====================================================
-     FAQ
-====================================================== -->
-
-<section
-    id="faq"
-    class="content-section faq-section"
->
-
-<div class="container">
-
-
-    <div class="section-heading">
-
-
-        <div class="section-index">
-            <span>04</span>
-        </div>
-
-
-        <div class="section-heading-text">
-
-            <span class="section-label">
-                DÚVIDAS
-            </span>
-
-            <h2>
-                Perguntas frequentes.
-            </h2>
-
-        </div>
+        </a>
 
 
     </div>
 
-
-
-    <div class="faq-list">
-
-
-        <!-- FAQ 01 -->
-
-        <div class="faq-item">
-
-
-            <button
-                class="faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-
-                    Meu BTV parou de funcionar.
-                    Vocês podem ajudar?
-
-                </span>
-
-
-                <span
-                    class="faq-icon"
-                    aria-hidden="true"
-                >
-
-                    +
-
-                </span>
-
-            </button>
-
-
-            <div class="faq-answer">
-
-                <p>
-
-                    Sim. Preencha o formulário
-                    acima com os dados do aparelho
-                    e nossa equipe poderá entrar
-                    em contato para orientar você.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- FAQ 02 -->
-
-        <div class="faq-item">
-
-
-            <button
-                class="faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Preciso enviar meu aparelho?
-                </span>
-
-
-                <span
-                    class="faq-icon"
-                    aria-hidden="true"
-                >
-
-                    +
-
-                </span>
-
-            </button>
-
-
-            <div class="faq-answer">
-
-                <p>
-
-                    O atendimento é realizado
-                    remotamente, através de
-                    orientação e suporte.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- FAQ 03 -->
-
-        <div class="faq-item">
-
-
-            <button
-                class="faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Vocês atendem outros modelos?
-                </span>
-
-
-                <span
-                    class="faq-icon"
-                    aria-hidden="true"
-                >
-
-                    +
-
-                </span>
-
-            </button>
-
-
-            <div class="faq-answer">
-
-                <p>
-
-                    Informe o modelo do seu aparelho
-                    no formulário e nossa equipe
-                    poderá verificar como podemos
-                    ajudar.
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- FAQ 04 -->
-
-        <div class="faq-item">
-
-
-            <button
-                class="faq-question"
-                type="button"
-                aria-expanded="false"
-            >
-
-                <span>
-                    Como faço para solicitar atendimento?
-                </span>
-
-
-                <span
-                    class="faq-icon"
-                    aria-hidden="true"
-                >
-
-                    +
-
-                </span>
-
-            </button>
-
-
-            <div class="faq-answer">
-
-                <p>
-
-                    Basta preencher o formulário
-                    com seus dados e clicar em
-                    "Solicitar atendimento".
-
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</div>
-
 </section>
 
-<!-- =====================================================
-     CTA FINAL
-====================================================== -->
-
-<section
-    id="cta"
-    class="final-cta"
->
-
-<div class="container cta-container">
-
-
-    <span class="section-label">
-        PRECISA DE AJUDA?
-    </span>
-
-
-    <h2>
-
-        Vamos encontrar
-        <span>uma solução.</span>
-
-    </h2>
-
-
-    <p>
-
-        Conte o que aconteceu com seu aparelho
-        e fale com nossa equipe.
-
-    </p>
-
-
-    <a
-        href="#formulario"
-        class="btn-primary"
-    >
-
-        SOLICITAR ATENDIMENTO
-
-        <span aria-hidden="true">
-            →
-        </span>
-
-    </a>
-
-
-</div>
-
-</section>
 
 </main>
 
-<!-- =====================================================
-     RODAPÉ
-====================================================== -->
+
 
 <footer>
 
-<div class="container footer-container">
+    <div class="container footer-container">
 
 
-    <div class="footer-brand">
+        <div class="footer-brand">
 
-
-        <a
-            href="#hero"
-            class="logo"
-            aria-label="Assistência Técnica"
-        >
-
-            <img
-                src="assets/logo.png"
-                alt="Assistência Técnica"
+            <a
+                href="#hero"
+                class="logo"
+                aria-label="Assistência Técnica"
             >
 
-        </a>
+                <img
+                    src="assets/logo.png"
+                    alt="Assistência Técnica"
+                >
+
+            </a>
+
+            <p>
+                Suporte técnico e orientação
+                para o seu aparelho.
+            </p>
+
+        </div>
+
+
+        <div class="footer-socials">
+
+
+            <a
+                href="#"
+                class="social-link"
+                data-v8="social.instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+            >
+
+                <span>
+                    ◎
+                </span>
+
+                Instagram
+
+            </a>
+
+
+            <a
+                href="#"
+                class="social-link"
+                data-v8="social.facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+            >
+
+                <span>
+                    f
+                </span>
+
+                Facebook
+
+            </a>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                ©
+                <span id="ano"></span>
+                Assistência Técnica.
+                Todos os direitos reservados.
+            </p>
+
+        </div>
 
 
     </div>
-
-
-
-    <div class="footer-socials">
-
-
-        <a
-            href="#"
-            class="social-link"
-            data-v8="social.instagram"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            Instagram
-
-        </a>
-
-
-        <a
-            href="#"
-            class="social-link"
-            data-v8="social.facebook"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            Facebook
-
-        </a>
-
-
-    </div>
-
-
-
-    <div class="footer-bottom">
-
-        <p>
-
-            ©
-            <span id="ano"></span>
-
-            Assistência Técnica.
-            Todos os direitos reservados.
-
-        </p>
-
-    </div>
-
-
-</div>
 
 </footer>
 
-<!-- =====================================================
-     WHATSAPP FLUTUANTE
-====================================================== -->
+
 
 <a
-href="#"
-class="whatsapp-float"
-aria-label="Falar no WhatsApp"
-data-v8="contact.whatsapp"
-data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
-
+    href="#"
+    class="whatsapp-float"
+    aria-label="Falar no WhatsApp"
+    data-v8="contact.whatsapp"
+    data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
 >
 
-<span aria-hidden="true">
-    ↗
-</span>
+    <span aria-hidden="true">
+        ↗
+    </span>
 
 </a>
 
-<!-- =====================================================
-     SCRIPT PRINCIPAL
-====================================================== -->
+
 
 <script src="js/script.js"></script>
-
-<!-- =====================================================
-     V8 ADMIN UNIVERSAL — LOADER
-====================================================== -->
 
 <script
     src="js/v8-loader.js"
@@ -1316,6 +1194,6 @@ data-whatsapp-message="Olá! Gostaria de informações sobre a assistência téc
     defer
 ></script>
 
-</body>
 
+</body>
 </html>
