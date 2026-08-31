@@ -1,4 +1,3 @@
-```javascript
 /* =========================================================
    ASSISTÊNCIA TÉCNICA
    SCRIPT.JS — V4
@@ -896,4 +895,3 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
-```
