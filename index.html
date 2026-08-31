@@ -21,7 +21,7 @@
 
     <meta
         name="theme-color"
-        content="#0A0A0A"
+        content="#080B10"
     >
 
     <link
@@ -51,7 +51,7 @@
     >
 
     <!-- =====================================================
-         CSS PRINCIPAL
+         CSS
     ====================================================== -->
 
     <link
@@ -66,12 +66,15 @@
 
 
 <!-- =====================================================
-     CABEÇALHO
+     CABEÇALHO / MENU
 ====================================================== -->
 
 <header id="main-header">
 
     <div class="container header-container">
+
+
+        <!-- LOGO -->
 
         <a
             href="#hero"
@@ -87,6 +90,53 @@
         </a>
 
 
+        <!-- MENU -->
+
+        <nav
+            class="main-nav"
+            aria-label="Navegação principal"
+        >
+
+            <a
+                href="#hero"
+                class="nav-link active"
+            >
+                Início
+            </a>
+
+            <a
+                href="#services"
+                class="nav-link"
+            >
+                Serviços
+            </a>
+
+            <a
+                href="#how-it-works"
+                class="nav-link"
+            >
+                Como funciona
+            </a>
+
+            <a
+                href="#formulario"
+                class="nav-link"
+            >
+                Atendimento
+            </a>
+
+            <a
+                href="#faq"
+                class="nav-link"
+            >
+                Dúvidas
+            </a>
+
+        </nav>
+
+
+        <!-- WHATSAPP -->
+
         <a
             href="#"
             class="btn-whatsapp"
@@ -96,6 +146,24 @@
             Falar no WhatsApp
         </a>
 
+
+        <!-- MENU MOBILE -->
+
+        <button
+            type="button"
+            class="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
     </div>
 
 </header>
@@ -103,7 +171,7 @@
 
 
 <!-- =====================================================
-     CONTEÚDO PRINCIPAL
+     CONTEÚDO
 ====================================================== -->
 
 <main>
@@ -151,9 +219,15 @@
                 <a
                     href="#formulario"
                     class="btn-primary"
+                    data-track="hero_cta_click"
                 >
+
                     SOLICITAR ATENDIMENTO
-                    <span aria-hidden="true">→</span>
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+
                 </a>
 
 
@@ -161,7 +235,9 @@
                     href="#services"
                     class="btn-secondary"
                 >
+
                     VER COMO PODEMOS AJUDAR
+
                 </a>
 
 
@@ -252,9 +328,6 @@
 
         <div class="section-heading">
 
-            <div class="section-number">
-                01
-            </div>
 
             <div>
 
@@ -268,6 +341,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -275,9 +349,10 @@
         <div class="services-list">
 
 
-            <!-- SERVIÇO 01 -->
+            <!-- SERVIÇO -->
 
             <article class="service-item">
+
 
                 <div class="service-number">
                     01
@@ -310,13 +385,15 @@
                     →
                 </a>
 
+
             </article>
 
 
 
-            <!-- SERVIÇO 02 -->
+            <!-- SERVIÇO -->
 
             <article class="service-item">
+
 
                 <div class="service-number">
                     02
@@ -348,13 +425,15 @@
                     →
                 </a>
 
+
             </article>
 
 
 
-            <!-- SERVIÇO 03 -->
+            <!-- SERVIÇO -->
 
             <article class="service-item">
+
 
                 <div class="service-number">
                     03
@@ -386,6 +465,7 @@
                     →
                 </a>
 
+
             </article>
 
 
@@ -409,9 +489,6 @@
 
         <div class="section-heading">
 
-            <div class="section-number">
-                02
-            </div>
 
             <div>
 
@@ -425,6 +502,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -432,9 +510,10 @@
         <div class="steps-grid">
 
 
-            <!-- PASSO 01 -->
+            <!-- PASSO -->
 
             <article class="step">
+
 
                 <div class="step-top">
 
@@ -460,13 +539,15 @@
 
                 </p>
 
+
             </article>
 
 
 
-            <!-- PASSO 02 -->
+            <!-- PASSO -->
 
             <article class="step">
+
 
                 <div class="step-top">
 
@@ -492,13 +573,15 @@
 
                 </p>
 
+
             </article>
 
 
 
-            <!-- PASSO 03 -->
+            <!-- PASSO -->
 
             <article class="step">
+
 
                 <div class="step-top">
 
@@ -523,6 +606,7 @@
 
                 </p>
 
+
             </article>
 
 
@@ -536,7 +620,7 @@
 
 
 <!-- =====================================================
-     FORMULÁRIO
+     FORMULÁRIO / ATENDIMENTO
 ====================================================== -->
 
 <section
@@ -553,7 +637,7 @@
 
 
             <span class="section-label">
-                03 · FALE COM A EQUIPE
+                FALE COM A EQUIPE
             </span>
 
 
@@ -610,17 +694,6 @@
 
 
         <!-- FORMULÁRIO -->
-
-        <!--
-            FORMULÁRIO CONTROLADO PELO V8 ADMIN UNIVERSAL.
-
-            O endpoint será configurado no
-            V8 Admin Universal.
-
-            ID DO PROJETO:
-            6e3c3f6c-1b93-4e05-874b-174327592152
-        -->
-
 
         <form
             action=""
@@ -737,8 +810,13 @@
                 type="submit"
                 class="btn-primary"
             >
+
                 SOLICITAR ATENDIMENTO
-                <span aria-hidden="true">→</span>
+
+                <span aria-hidden="true">
+                    →
+                </span>
+
             </button>
 
 
@@ -762,9 +840,6 @@
 
         <div class="section-heading">
 
-            <div class="section-number">
-                04
-            </div>
 
             <div>
 
@@ -778,6 +853,7 @@
 
             </div>
 
+
         </div>
 
 
@@ -785,7 +861,7 @@
         <div class="faq-list">
 
 
-            <!-- FAQ 01 -->
+            <!-- FAQ -->
 
             <div class="faq-item">
 
@@ -827,7 +903,7 @@
 
 
 
-            <!-- FAQ 02 -->
+            <!-- FAQ -->
 
             <div class="faq-item">
 
@@ -867,7 +943,7 @@
 
 
 
-            <!-- FAQ 03 -->
+            <!-- FAQ -->
 
             <div class="faq-item">
 
@@ -908,7 +984,7 @@
 
 
 
-            <!-- FAQ 04 -->
+            <!-- FAQ -->
 
             <div class="faq-item">
 
@@ -987,9 +1063,15 @@
         <a
             href="#formulario"
             class="btn-primary"
+            data-track="final_cta_click"
         >
+
             SOLICITAR ATENDIMENTO
-            <span aria-hidden="true">→</span>
+
+            <span aria-hidden="true">
+                →
+            </span>
+
         </a>
 
 
@@ -1064,9 +1146,7 @@
             <p>
 
                 ©
-                <span id="ano">
-                    2026
-                </span>
+                <span id="ano"></span>
 
                 Assistência Técnica.
                 Todos os direitos reservados.
@@ -1093,15 +1173,17 @@
     data-v8="contact.whatsapp"
     data-whatsapp-message="Olá! Gostaria de informações sobre a assistência técnica para meu aparelho."
 >
+
     <span aria-hidden="true">
         ↗
     </span>
+
 </a>
 
 
 
 <!-- =====================================================
-     SCRIPT PRINCIPAL
+     JAVASCRIPT
 ====================================================== -->
 
 <script src="js/script.js"></script>
@@ -1109,10 +1191,32 @@
 
 
 <!-- =====================================================
-     V8 ADMIN UNIVERSAL — LOADER
+     ANO AUTOMÁTICO
+====================================================== -->
 
-     Este ID identifica o projeto no
-     V8 Admin Universal.
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const ano =
+                document.getElementById("ano");
+
+            if (ano) {
+                ano.textContent =
+                    new Date().getFullYear();
+            }
+
+        }
+    );
+
+</script>
+
+
+
+<!-- =====================================================
+     V8 ADMIN UNIVERSAL — LOADER
 ====================================================== -->
 
 <script
